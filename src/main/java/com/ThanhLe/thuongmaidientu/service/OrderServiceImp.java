@@ -3,7 +3,7 @@ package com.ThanhLe.thuongmaidientu.service;
 import com.ThanhLe.thuongmaidientu.entity.Order;
 import com.ThanhLe.thuongmaidientu.entity.OrderDetail;
 import com.ThanhLe.thuongmaidientu.entity.Product;
-import com.ThanhLe.thuongmaidientu.entity.User;
+import com.ThanhLe.thuongmaidientu.entity.Users;
 import com.ThanhLe.thuongmaidientu.facede.CartServiceFacede;
 import com.ThanhLe.thuongmaidientu.repository.OrderDetailRepository;
 import com.ThanhLe.thuongmaidientu.repository.OrderRepository;
@@ -36,10 +36,10 @@ public class OrderServiceImp implements OrderService{
     OrderDetailRepository orderDetailRepository;
     @Override
     public void showForm(Order order) {
-        User user = (User) session.getAttribute("user");
+        Users users = (Users) session.getAttribute("user");
 
         order.setOrderDate(new Date());
-        order.setUser(user);
+        order.setUsers(users);
         order.setAmount(cart.getAmount());
         order.setStatus(1);
 
@@ -67,8 +67,8 @@ public class OrderServiceImp implements OrderService{
 
     @Override
     public void orderList(Model model) {
-        User user = (User) session.getAttribute("user");
-        List<Order> orders = orderRepository.findByUser(user);
+        Users users = (Users) session.getAttribute("user");
+        List<Order> orders = orderRepository.findByUser(users);
         model.addAttribute("orders", orders);
     }
 
@@ -82,8 +82,8 @@ public class OrderServiceImp implements OrderService{
 
     @Override
     public void orderItems(Model model) {
-        User user = (User) session.getAttribute("user");
-        List<Product> list = orderRepository.findItemsByUser(user);
+        Users users = (Users) session.getAttribute("user");
+        List<Product> list = orderRepository.findItemsByUser(users);
         model.addAttribute("list", list);
     }
 }

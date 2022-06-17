@@ -1,23 +1,24 @@
 package com.ThanhLe.thuongmaidientu.repository;
 
-import com.ThanhLe.thuongmaidientu.entity.User;
+import com.ThanhLe.thuongmaidientu.entity.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
+public interface UserRepository extends JpaRepository<Users,Integer> {
+    Users getReferenceById(Integer id);
 
-public interface UserRepository  {
-    User findById(Integer id);
+    List<Users> findAll();
 
-    List<User> findAll();
+    Users create(Users entity);
 
-    User create(User entity);
+    void update(Users entity);
 
-    void update(User entity);
+    Users delete(Integer id);
 
-    User delete(String id);
 
-    long getPageCount(int pageSize);
 
-    List<User> getPage(int pageNo, int pageSize);
+
 }

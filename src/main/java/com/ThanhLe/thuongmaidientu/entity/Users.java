@@ -16,7 +16,7 @@ import java.util.List;
 @Getter
 @Setter
 @Data
-public class User {
+public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotEmpty
@@ -41,7 +41,7 @@ public class User {
     Boolean admin;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "users")
     List<Order> orders;
     public Integer getId() {
         return id;

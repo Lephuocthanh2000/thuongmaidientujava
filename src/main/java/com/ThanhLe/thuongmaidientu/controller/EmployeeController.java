@@ -1,7 +1,6 @@
 package com.ThanhLe.thuongmaidientu.controller;
 
 import com.ThanhLe.thuongmaidientu.entity.EmployeeProfile;
-import com.ThanhLe.thuongmaidientu.entity.User;
 import com.ThanhLe.thuongmaidientu.service.EmployeeProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/employes")

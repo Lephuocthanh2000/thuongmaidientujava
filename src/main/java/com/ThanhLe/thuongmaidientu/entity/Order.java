@@ -30,7 +30,7 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name="userId")
-    User user;
+    Users users;
 
 
     @OneToMany(mappedBy = "order")
