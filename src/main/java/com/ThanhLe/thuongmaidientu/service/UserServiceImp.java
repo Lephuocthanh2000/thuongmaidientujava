@@ -27,7 +27,7 @@ public class UserServiceImp implements UserService{
     ServletContext app;
     @Override
     public boolean createUser(Model model,  MultipartFile file,Users entity) throws IllegalStateException,IOException{
-        Users Users2 = userRepository.getReferenceById(entity.getId());
+        Users Users2 = userRepository.findById(entity.getId());
         if (Users2 != null) {
             model.addAttribute("message", "Tên đăng nhập đã được sử dụng!");
             return false;
@@ -58,7 +58,7 @@ public class UserServiceImp implements UserService{
 
     @Override
     public void userEdit(Model model,Integer id) {
-        Users entity = userRepository.getReferenceById(id);
+        Users entity = userRepository.findById(id);
         model.addAttribute("entity", entity);
         model.addAttribute("list", userRepository.findAll());
     }

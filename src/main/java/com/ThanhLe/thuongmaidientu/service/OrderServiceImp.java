@@ -74,7 +74,7 @@ public class OrderServiceImp implements OrderService{
 
     @Override
     public void orderDetail(Model model, Integer id) {
-        Order order = orderRepository.getReferenceById(id);
+        Order order = orderRepository.findById(id);
         List<OrderDetail> details = orderDetailRepository.findByOrder(order);
         model.addAttribute("order", order);
         model.addAttribute("details", details);

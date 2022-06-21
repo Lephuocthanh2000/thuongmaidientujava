@@ -5,13 +5,16 @@ import com.ThanhLe.thuongmaidientu.entity.OrderDetail;
 import com.ThanhLe.thuongmaidientu.entity.Product;
 import com.ThanhLe.thuongmaidientu.entity.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface OrderRepository extends JpaRepository<Order,Integer> {
-    Order getReferenceById(Integer id);
+public interface OrderRepository  {
+    Order findById(Integer id);
 
     List<Order> findAll();
 
@@ -23,7 +26,7 @@ public interface OrderRepository extends JpaRepository<Order,Integer> {
 
     void create(Order order, List<OrderDetail> details);
 
-    List<Order> findByUser(Users users);
+    List<Order> findByUser(Users user);
 
-    List<Product> findItemsByUser(Users users);
+    List<Product> findItemsByUser(Users user);
 }

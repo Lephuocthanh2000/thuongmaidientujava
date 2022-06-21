@@ -29,7 +29,7 @@ public class UsersManagerController {
         return "admin/customer/index";
     }
 
-    @RequestMapping("/admin/customer/create")
+    @RequestMapping("/create")
     public String create(RedirectAttributes model, @Validated @ModelAttribute("entity") Users entity,
                          @RequestParam("photo_file") MultipartFile file) throws IllegalStateException, IOException {
         if(userservice.createUser(model,file,entity)==false){

@@ -6,9 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
-public interface UserRepository extends JpaRepository {
-    Users getReferenceById(Integer id);
+
+public interface UserRepository  {
+    Users findById(Integer id);
 
     List<Users> findAll();
 
@@ -18,7 +18,9 @@ public interface UserRepository extends JpaRepository {
 
     Users delete(Integer id);
 
+    long getPageCount(int pageSize);
 
+    List<Users> getPage(int pageNo, int pageSize);
 
 
 }
