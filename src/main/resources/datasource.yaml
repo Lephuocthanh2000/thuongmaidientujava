@@ -1,0 +1,15 @@
+spring:
+  jpa:
+    show-sql: true
+    session: org.springframework.orm.hibernate5.SpringSessionContext
+    hibernate:
+      dialect: org.hibernate.dialect.SQLServer2008Dialect
+      ddl-auto: update
+
+
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/thuongmaidientu
+    username: postgres
+    password: 123456
