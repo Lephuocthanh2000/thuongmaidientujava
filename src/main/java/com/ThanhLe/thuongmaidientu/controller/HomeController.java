@@ -19,12 +19,12 @@ public class HomeController {
     ProductRepositoryImp pdao;
 
     @RequestMapping(value = {"", "/home"})
-    public String index(Model model) {
+    public List<Product> index(Model model) {
         List<Product> list2 = pdao.findBySpecial(4);
         model.addAttribute("list", list2);
         List<Product> list3 = pdao.findBySpecial(0);
         model.addAttribute("list1", list3);
-        return "home/index";
+        return list3;
     }
     @RequestMapping("/about")
     public String about() {

@@ -8,8 +8,10 @@ import org.springframework.stereotype.Repository;
 
 
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 import java.util.List;
 
+@Transactional
 @Repository
 public class ProductRepositoryImp implements ProductRepository{
     @Autowired
@@ -86,30 +88,32 @@ public class ProductRepositoryImp implements ProductRepository{
     @Override
     public List<Product> findBySpecial(Integer id) {
         Session session=factory.getCurrentSession();
-        String hql="FROM Product p";
-        TypedQuery<Product> query= session.createQuery(hql,Product.class);
+        String hql;
         switch (id) {
             case 0://mới
-                hql="FROM Product p ORDER BY p.productDate DESC";
+                hql = "FROM Product p ORDER BY p.productDate DESC";
                 break;
 
             case 1://bán chạy
-                hql="FROM Product p ORDER BY size(p.orderDetails) DESC";
+                hql = "FROM Product p ORDER BY size(p.orderDetails) DESC";
                 break;
 
             case 2://xem nhiều
-                hql="FROM Product p ORDER BY p.viewCount DESC";
+                hql = "FROM Product p ORDER BY p.viewCount DESC";
                 break;
 
             case 3://giảm giá
-                hql="FROM Product p ORDER BY p.discount DESC";
+                hql = "FROM Product p ORDER BY p.discount DESC";
                 break;
 
             case 4://dac biet
-                hql="FROM Product p WHERE p.special=true ORDER BY p.productDate DESC";
+                hql = "FROM Product p WHERE p.special=true ORDER BY p.productDate DESC";
+                break;
+            default:
+                hql="select * FROM Product p";
                 break;
         }
-        query=session.createQuery(hql,Product.class);
+        TypedQuery<Product> query=session.createQuery(hql, Product.class);
         query.setMaxResults(12);
 
         List<Product> list=query.getResultList();
