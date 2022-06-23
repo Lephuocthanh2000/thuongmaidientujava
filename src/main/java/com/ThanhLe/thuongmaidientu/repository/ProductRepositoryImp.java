@@ -82,11 +82,12 @@ public class ProductRepositoryImp implements ProductRepository{
         return list;
     }
 
+
     @Override
     public List<Product> findBySpecial(Integer id) {
         Session session=factory.getCurrentSession();
         String hql="FROM Product p";
-        TypedQuery<Product> query=session.createQuery(hql, Product.class);
+        TypedQuery<Product> query= session.createQuery(hql,Product.class);
         switch (id) {
             case 0://mới
                 hql="FROM Product p ORDER BY p.productDate DESC";
@@ -108,14 +109,12 @@ public class ProductRepositoryImp implements ProductRepository{
                 hql="FROM Product p WHERE p.special=true ORDER BY p.productDate DESC";
                 break;
         }
-        query=session.createQuery(hql, Product.class);
+        query=session.createQuery(hql,Product.class);
         query.setMaxResults(12);
 
         List<Product> list=query.getResultList();
         return list;
     }
-
-
 
 
 }
