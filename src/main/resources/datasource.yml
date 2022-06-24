@@ -4,7 +4,7 @@ spring:
     session: org.springframework.orm.hibernate5.SpringSessionContext
     hibernate:
       dialect: org.hibernate.dialect.SQLServer2008Dialect
-      ddl-auto: update
+      ddl-auto: 'create-drop
 
 
 

@@ -1,14 +1,24 @@
 #spring:
 #  jpa:
-#    database: POSTGRESQL
+#    database: thuongmaidientu
 #    show-sql: true
 #    hibernate:
-#      ddl-auto: update
+#      ddl-auto: 'create-drop'
 #  datasource:
 #    platform: postgres
 #    url: jdbc:postgresql://localhost:5432/thuongmaidientu
 #    username: postgres
 #    password: 123456
 #    driverClassName: org.postgresql.Driver
-server:
-  port: 8080
+#server:
+#  port: 8080
+
+spring.datasource.url = jdbc:postgresql://localhost:5432/thuongmaidientu
+
+spring.datasource.username = postgres
+
+spring.datasource.password = 123456
+
+spring.jpa.hibernate.ddl-auto = create-drop
+
+spring.jpa.properties.hibernate.dialect =  org.hibernate.dialect.SQLServer2008Dialect
